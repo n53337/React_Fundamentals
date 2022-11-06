@@ -18,18 +18,43 @@
     //   </div>
     // );
 
-    const message = (children) => {
-      return <div {...children}>Hrl</div>;
+    // const message = (children) => {
+    //   return <div {...children}>Hrl</div>;
+    // };
+
+    // const child = {
+    //   className: "container",
+    //   // children: "GoodBye World",
+    // };
+
+    // // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
+
+    // ! Validation with Proptypes
+
+    function FavoriteNumber({ favoriteNumber }) {
+      return (
+        // React.Fragment
+        <>
+          <div>My favorite number is: {favoriteNumber}</div>
+          <div>My favorite number is: {favoriteNumber}</div>
+        </>
+      );
+    }
+
+    const PropTypes = {
+      number(props, propName, componentName) {
+        if (typeof props[propName] !== "number") {
+          return new Error("Some useful error message here");
+        }
+      },
     };
 
-    const child = {
-      className: "container",
-      // children: "GoodBye World",
+    FavoriteNumber.propTypes = {
+      favoriteNumber: PropTypes.number,
     };
 
-    // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.createRoot(document.getElementById("root")).render(
-      <message children={child}></message>
+      <FavoriteNumber favoriteNumber="99"></FavoriteNumber>
     );
   </script>
 </body>
