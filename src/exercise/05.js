@@ -1,8 +1,8 @@
 // Styling
 // http://localhost:3000/isolated/exercise/05.js
 
-import * as React from 'react'
-import '../box-styles.css'
+import * as React from "react";
+import "../box-styles.css";
 
 // 🐨 add a className prop to each div and apply the correct class names
 // based on the text content
@@ -14,9 +14,32 @@ import '../box-styles.css'
 // 🐨 also use the style prop to make the font italic
 // 💰 Here are available style attributes: backgroundColor, fontStyle
 
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+const smallBox = (
+  <div className="box box--small" style={{ backgroundColor: "cyan" }}>
+    small lightblue box
+  </div>
+);
+const mediumBox = (
+  <div className="box box--medium" style={{ backgroundColor: "pink" }}>
+    medium pink box
+  </div>
+);
+const largeBox = (
+  <div className="box box--large" style={{ backgroundColor: "tomato" }}>
+    large orange box
+  </div>
+);
+// custom box
+const CustomBox = ({ size, color }) => {
+  return (
+    <div
+      className="box "
+      style={{ backgroundColor: color, width: size, height: size }}
+    >
+      Custom box
+    </div>
+  );
+};
 
 function App() {
   return (
@@ -24,8 +47,9 @@ function App() {
       {smallBox}
       {mediumBox}
       {largeBox}
+      <CustomBox size="400px" color="purple"></CustomBox>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
