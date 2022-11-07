@@ -58,6 +58,7 @@ import * as React from "react";
 function UsernameForm({ onSubmitUsername }) {
   const usernameInputRef = React.useRef();
   const [err, setErr] = React.useState(null);
+  const [userInput, setUserInput] = React.useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -66,11 +67,16 @@ function UsernameForm({ onSubmitUsername }) {
 
   function handleChange(event) {
     const data = event.target.value;
-    if (data === data.toLowerCase()) {
-      setErr(null);
-    } else {
-      setErr("The username must be in Lower-case 🚫");
-    }
+    // ! Control input value
+    setUserInput(data + 1);
+    console.log(data);
+    // if (data === data.toLowerCase()) {
+    //   // ! Control Input value
+    //   console.log(userInput, data);
+    //   setErr(null);
+    // } else {
+    //   setErr("The username must be in Lower-case 🚫");
+    // }
   }
 
   return (
@@ -80,8 +86,8 @@ function UsernameForm({ onSubmitUsername }) {
         <input
           id="usernameInput"
           type="text"
+          value={userInput}
           onChange={handleChange}
-          ref={usernameInputRef}
         />
       </div>
       <button disabled={Boolean(err)} type="submit">
